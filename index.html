@@ -141,6 +141,29 @@
     .float.whatsapp{left:18px; background:#25d366}
     .float.call{right:18px; background:#198754}
     /* SMALL */
+    /* Mobile fixes */
+@media (max-width:768px){
+  .hero-form{
+    grid-template-columns:1fr !important;
+  }
+  .hero-form .field[style]{
+    grid-column: auto !important; /* override inline span=2 */
+  }
+  .hero .overlay{
+    text-align:left; /* optional: left align for better readability */
+    padding:32px 16px;
+  }
+  .hero h1{
+    font-size:24px;
+  }
+  .hero p{
+    font-size:15px;
+  }
+  body, html{
+    overflow-x:hidden; /* prevent side scroll */
+  }
+}
+
     @media (max-width:1000px){
       .hero-form{grid-template-columns:1fr 1fr; }
       .cards{grid-template-columns:1fr}
