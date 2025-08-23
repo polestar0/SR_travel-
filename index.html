@@ -10,9 +10,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --brand:#0d6efd;
+      --brand:#0d6efd;           /* primary */
       --brand-dark:#0a58ca;
-      --accent:#ffc107;
+      --accent:#ffc107;          /* amber accent */
       --bg:#f6f8fb;
       --card:#ffffff;
       --text:#222;
@@ -30,7 +30,6 @@
     }
     a{color:var(--brand); text-decoration:none}
     img{max-width:100%; display:block}
-
     /* NAV */
     .nav{
       position:sticky; top:0; z-index:999;
@@ -52,7 +51,6 @@
       border-radius:12px; box-shadow:var(--shadow); font-weight:700;
     }
     .cta:hover{background:var(--brand-dark)}
-
     /* HERO */
     .hero{
       position:relative; min-height:64vh; display:grid; place-items:center; overflow:hidden;
@@ -70,24 +68,16 @@
       font-size:clamp(28px,5vw,48px); margin:0 0 8px; font-weight:800; letter-spacing:.2px;
     }
     .hero p{margin:0 auto 20px; max-width:720px; color:#e7eaf1}
-
-    .hero-badges{
-      display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:20px
-    }
-    .badge{
-      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); padding:8px 12px;
-      border-radius:999px; font-weight:600
-    }
-
+    .hero-badges{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:20px}
+    .badge{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); padding:8px 12px; border-radius:999px; font-weight:600}
     .hero-form{
       margin:18px auto 0; max-width:980px; background:#fff; border-radius:20px; box-shadow:var(--shadow); padding:16px;
       display:grid; gap:12px; grid-template-columns:repeat(6,1fr); align-items:end;
     }
-    .hero-form > *{min-width:0;} /* prevent child overflow in grid */
     .field{display:flex; flex-direction:column; gap:6px}
     .field label{font-size:12px; font-weight:700; color:#475467}
     .input, select{
-      border:1px solid #e5e7eb; padding:12px 12px; border-radius:12px; background:#fff; outline:none; width:100%;
+      border:1px solid #e5e7eb; padding:12px 12px; border-radius:12px; background:#fff; outline:none;
     }
     .input:focus, select:focus{border-color:var(--brand)}
     .btn{
@@ -98,7 +88,6 @@
     .est{
       grid-column:span 6; font-size:14px; color:var(--muted); display:flex; align-items:center; gap:12px; padding:4px 6px;
     }
-
     /* CAR GRID */
     .section{padding:56px 0}
     .title{font-size:28px; font-weight:800; margin:0 0 10px}
@@ -115,27 +104,22 @@
     .card-actions{display:flex; gap:10px; margin-top:10px}
     .ghost{background:#f3f4f6; color:#111}
     .outline{background:#fff; border:1px solid #e5e7eb}
-
     /* FEATURES */
     .features{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
     .feat{background:#fff; border-radius:16px; padding:18px; box-shadow:var(--shadow)}
     .feat h4{margin:8px 0 6px}
-
     /* ABOUT + MAP */
     .about{display:grid; grid-template-columns:1.1fr .9fr; gap:20px; align-items:center}
     iframe.map{width:100%; height:340px; border:0; border-radius:16px; box-shadow:var(--shadow)}
-
     /* TESTIMONIALS */
     .testis{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
     .quote{background:#fff; border-radius:16px; padding:18px; box-shadow:var(--shadow)}
-
     /* FAQ */
     details{
       background:#fff; border-radius:14px; padding:14px 16px; box-shadow:var(--shadow);
     }
     summary{cursor:pointer; font-weight:700}
     details + details{margin-top:10px}
-
     /* FOOTER */
     .footer{
       background:#0e1b2a; color:#e6edf6; padding:36px 0 24px;
@@ -149,18 +133,52 @@
     .foot-grid ul{list-style:none; padding:0; margin:0}
     .foot-grid li{margin:6px 0}
     .copyright{border-top:1px solid rgba(255,255,255,.08); margin-top:18px; padding-top:14px; color:#b6c2d0; font-size:14px}
-
     /* FLOATING BUTTONS */
     .float{
-      position:fixed; bottom:calc(18px + env(safe-area-inset-bottom)); z-index:9999; display:flex; align-items:center; gap:8px;
+      position:fixed; bottom:18px; z-index:9999; display:flex; align-items:center; gap:8px;
       padding:10px 12px; border-radius:999px; color:#fff; font-weight:800; box-shadow:var(--shadow)
     }
-    .float.whatsapp{left:calc(18px + env(safe-area-inset-left)); background:#25d366}
-    .float.call{right:calc(18px + env(safe-area-inset-right)); background:#198754}
+    .float.whatsapp{left:18px; background:#25d366}
+    .float.call{right:18px; background:#198754}
+    /* SMALL */
+    /* Mobile fixes */
+/* Mobile fixes */
+    
+/* Mobile responsive form */
+@media (max-width: 768px) {
+  .hero-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    width: 100% !important;
+  }
 
-    /* TABLET (769–1000px): two-column form */
-    @media (min-width:769px) and (max-width:1000px){
-      .hero-form{grid-template-columns:1fr 1fr;}
+  .hero-form .field {
+    grid-column: auto !important; /* remove span-2 */
+    width: 100% !important;
+  }
+
+  .hero-form button {
+    width: 100% !important; /* full width button */
+  }
+}
+/* Mobile responsive badges */
+@media (max-width: 768px) {
+  .badges {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .badges .badge {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+        @media (max-width:1000px){
+      .hero-form{grid-template-columns:1fr 1fr; }
       .cards{grid-template-columns:1fr}
       .features{grid-template-columns:1fr 1fr}
       .about{grid-template-columns:1fr}
@@ -168,37 +186,10 @@
       .foot-grid{grid-template-columns:1fr}
     }
 
-    /* MOBILE (≤768px) — real fixes */
-    @media (max-width:768px){
-      /* stack badges vertically */
-      .hero-badges{
-        flex-direction:column; align-items:center; gap:10px;
-      }
-      .hero-badges .badge{
-        width:100%; text-align:center;
-      }
-
-      /* make the form truly one column */
-      .hero-form{
-        grid-template-columns:1fr !important;
-      }
-      .hero-form .field,
-      .hero-form .btn,
-      .hero-form .est{
-        grid-column:1 / -1 !important; /* overrides span 6 + inline span 2 */
-        width:100%;
-      }
-      .hero-form select,
-      .hero-form .input{
-        width:100%; min-width:0; /* prevent overflow from long content */
-      }
-
-      /* ensure images/embeds can't cause horizontal scroll */
-      img, iframe {max-width:100%}
-    }
   </style>
 </head>
 <body>
+
   <!-- NAV -->
   <nav class="nav">
     <div class="container nav-inner">
@@ -344,7 +335,7 @@
     </div>
   </section>
 
-  <!-- SECOND FORM -->
+  <!-- SECOND FORM (optional for users who scroll) -->
   <section class="section" style="padding-top:0">
     <div class="container">
       <div class="title">Quick Booking</div>
@@ -582,6 +573,7 @@ Please confirm availability and final quote.`;
       selectBtns.forEach(btn=>{
         btn.addEventListener('click', (e)=>{
           e.preventDefault();
+          // set both selects
           document.getElementById('car').value = value;
           document.getElementById('car2').value = value;
           updateEstimate('car','fromDate','tillDate',est1);
@@ -603,5 +595,3 @@ Please confirm availability and final quote.`;
   </script>
 </body>
 </html>
-
-
