@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SRtravels — Car Rental in Indore</title>
+  <meta name="description" content="SRtravels — Fast & Reliable Car Rentals in Indore. Book SUVs, Sedans, and Hatchbacks at great rates.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#0d6efd;           /* primary */
+      --brand-dark:#0a58ca;
+      --accent:#ffc107;          /* amber accent */
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --text:#222;
+      --muted:#667085;
+      --success:#198754;
+      --shadow:0 10px 25px rgba(16,24,40,.08);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.6;
+    }
+    a{color:var(--brand); text-decoration:none}
+    img{max-width:100%; display:block}
+    /* NAV */
+    .nav{
+      position:sticky; top:0; z-index:999;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(255,255,255,.85);
+      border-bottom:1px solid #eef2f7;
+    }
+    .container{max-width:1180px; margin:0 auto; padding:0 16px}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px; color:var(--brand-dark)}
+    .brand .logo{
+      width:36px; height:36px; border-radius:12px; background:linear-gradient(135deg,var(--brand),#5aa2ff);
+      display:grid; place-items:center; color:#fff; font-weight:800; box-shadow:var(--shadow)
+    }
+    .menu{display:flex; gap:20px}
+    .menu a{color:#111; font-weight:600; opacity:.9}
+    .cta{
+      display:inline-flex; align-items:center; gap:8px; background:var(--brand); color:#fff; padding:10px 14px;
+      border-radius:12px; box-shadow:var(--shadow); font-weight:700;
+    }
+    .cta:hover{background:var(--brand-dark)}
+    /* HERO */
+    .hero{
+      position:relative; min-height:64vh; display:grid; place-items:center; overflow:hidden;
+      background:#0b1220;
+    }
+    .hero img.bg{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      filter:brightness(.55) saturate(1.1);
+      transform:scale(1.02);
+    }
+    .hero .overlay{
+      position:relative; z-index:1; color:#fff; text-align:center; padding:48px 16px;
+    }
+    .hero h1{
+      font-size:clamp(28px,5vw,48px); margin:0 0 8px; font-weight:800; letter-spacing:.2px;
+    }
+    .hero p{margin:0 auto 20px; max-width:720px; color:#e7eaf1}
+    .hero-badges{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-bottom:20px}
+    .badge{background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); padding:8px 12px; border-radius:999px; font-weight:600}
+    .hero-form{
+      margin:18px auto 0; max-width:980px; background:#fff; border-radius:20px; box-shadow:var(--shadow); padding:16px;
+      display:grid; gap:12px; grid-template-columns:repeat(6,1fr); align-items:end;
+    }
+    .field{display:flex; flex-direction:column; gap:6px}
+    .field label{font-size:12px; font-weight:700; color:#475467}
+    .input, select{
+      border:1px solid #e5e7eb; padding:12px 12px; border-radius:12px; background:#fff; outline:none;
+    }
+    .input:focus, select:focus{border-color:var(--brand)}
+    .btn{
+      background:var(--brand); color:#fff; border:none; padding:12px 14px; border-radius:12px; font-weight:800; cursor:pointer;
+      box-shadow:var(--shadow);
+    }
+    .btn:hover{background:var(--brand-dark)}
+    .est{
+      grid-column:span 6; font-size:14px; color:var(--muted); display:flex; align-items:center; gap:12px; padding:4px 6px;
+    }
+    /* CAR GRID */
+    .section{padding:56px 0}
+    .title{font-size:28px; font-weight:800; margin:0 0 10px}
+    .muted{color:var(--muted); margin:0 0 22px}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .card{
+      background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column;
+      transition:transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover{transform:translateY(-4px)}
+    .card-body{padding:16px}
+    .pill{display:inline-block; padding:6px 10px; border-radius:999px; background:#eef6ff; color:var(--brand-dark); font-weight:700; font-size:12px}
+    .rate{color:var(--success); font-weight:800; font-size:18px}
+    .card-actions{display:flex; gap:10px; margin-top:10px}
+    .ghost{background:#f3f4f6; color:#111}
+    .outline{background:#fff; border:1px solid #e5e7eb}
+    /* FEATURES */
+    .features{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
+    .feat{background:#fff; border-radius:16px; padding:18px; box-shadow:var(--shadow)}
+    .feat h4{margin:8px 0 6px}
+    /* ABOUT + MAP */
+    .about{display:grid; grid-template-columns:1.1fr .9fr; gap:20px; align-items:center}
+    iframe.map{width:100%; height:340px; border:0; border-radius:16px; box-shadow:var(--shadow)}
+    /* TESTIMONIALS */
+    .testis{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .quote{background:#fff; border-radius:16px; padding:18px; box-shadow:var(--shadow)}
+    /* FAQ */
+    details{
+      background:#fff; border-radius:14px; padding:14px 16px; box-shadow:var(--shadow);
+    }
+    summary{cursor:pointer; font-weight:700}
+    details + details{margin-top:10px}
+    /* FOOTER */
+    .footer{
+      background:#0e1b2a; color:#e6edf6; padding:36px 0 24px;
+    }
+    .socials{display:flex; gap:12px; margin-top:10px}
+    .socials a{
+      width:38px; height:38px; display:grid; place-items:center; border-radius:12px; background:rgba(255,255,255,.08);
+      color:#fff; font-size:18px;
+    }
+    .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:24px}
+    .foot-grid ul{list-style:none; padding:0; margin:0}
+    .foot-grid li{margin:6px 0}
+    .copyright{border-top:1px solid rgba(255,255,255,.08); margin-top:18px; padding-top:14px; color:#b6c2d0; font-size:14px}
+    /* FLOATING BUTTONS */
+    .float{
+      position:fixed; bottom:18px; z-index:9999; display:flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:999px; color:#fff; font-weight:800; box-shadow:var(--shadow)
+    }
+    .float.whatsapp{left:18px; background:#25d366}
+    .float.call{right:18px; background:#198754}
+    /* SMALL */
+    @media (max-width:1000px){
+      .hero-form{grid-template-columns:1fr 1fr; }
+      .cards{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr 1fr}
+      .about{grid-template-columns:1fr}
+      .testis{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo">SR</div>
+        <span>SRtravels</span>
+      </div>
+      <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#cars">Cars</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="cta" href="https://wa.me/9646884773" target="_blank" rel="noopener">Book on WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <img class="bg" src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=1600&auto=format&fit=crop" alt="SRtravels car on highway">
+    <div class="overlay container">
+      <div class="hero-badges">
+        <span class="badge">Indore • 24/7 Support</span>
+        <span class="badge">Clean & Well-Maintained Fleet</span>
+        <span class="badge">Professional Drivers</span>
+      </div>
+      <h1>Fast & Reliable Car Rentals in Indore</h1>
+      <p>Choose your ride, pick your dates, and send a quote instantly on WhatsApp. Transparent rates and friendly service from SRtravels.</p>
+
+      <!-- INLINE BOOKING FORM -->
+      <form id="heroForm" class="hero-form">
+        <div class="field" style="grid-column:span 2">
+          <label for="car">Select Car</label>
+          <select id="car" required>
+            <option value="">-- Choose Car --</option>
+            <option value="Luxury SUV|2500">Luxury SUV — ₹2500/day</option>
+            <option value="Comfort Sedan|1800">Comfort Sedan — ₹1800/day</option>
+            <option value="Budget Hatchback|1200">Budget Hatchback — ₹1200/day</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pickup">Pickup Point</label>
+          <input class="input" id="pickup" placeholder="e.g. Indore Junction" required>
+        </div>
+        <div class="field">
+          <label for="destination">Destination</label>
+          <input class="input" id="destination" placeholder="e.g. Ujjain" required>
+        </div>
+        <div class="field">
+          <label for="fromDate">From</label>
+          <input class="input" id="fromDate" type="date" required>
+        </div>
+        <div class="field">
+          <label for="tillDate">Till</label>
+          <input class="input" id="tillDate" type="date" required>
+        </div>
+        <button type="submit" class="btn">Send Quote on WhatsApp</button>
+        <div id="estimate" class="est">💡 Estimated total: —</div>
+      </form>
+    </div>
+  </header>
+
+  <!-- CARS -->
+  <section id="cars" class="section">
+    <div class="container">
+      <h2 class="title">Choose Your Car</h2>
+      <p class="muted">Transparent demo rates per day. Click a card to preselect it in the booking form.</p>
+
+      <div class="cards">
+        <!-- CAR 1 -->
+        <article class="card" data-car="Luxury SUV|2500">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200&auto=format&fit=crop" alt="Luxury SUV">
+          <div class="card-body">
+            <span class="pill">Luxury SUV</span>
+            <h3 style="margin:8px 0 6px">Spacious & Premium</h3>
+            <div class="rate">₹2500 / day</div>
+            <p class="muted">Ideal for family trips, outstation travel, and comfortable long drives.</p>
+            <div class="card-actions">
+              <button class="btn selectBtn">Select</button>
+              <button class="btn outline waBtn" data-msg="Interested in Luxury SUV">WhatsApp</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CAR 2 -->
+        <article class="card" data-car="Comfort Sedan|1800">
+          <img src="https://images.unsplash.com/photo-1549921296-3ecf9c5b9c4a?q=80&w=1200&auto=format&fit=crop" alt="Comfort Sedan">
+          <div class="card-body">
+            <span class="pill">Comfort Sedan</span>
+            <h3 style="margin:8px 0 6px">Smooth & Efficient</h3>
+            <div class="rate">₹1800 / day</div>
+            <p class="muted">Perfect for city rides and business travel with great mileage.</p>
+            <div class="card-actions">
+              <button class="btn selectBtn">Select</button>
+              <button class="btn outline waBtn" data-msg="Interested in Comfort Sedan">WhatsApp</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CAR 3 -->
+        <article class="card" data-car="Budget Hatchback|1200">
+          <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?q=80&w=1200&auto=format&fit=crop" alt="Budget Hatchback">
+          <div class="card-body">
+            <span class="pill">Budget Hatchback</span>
+            <h3 style="margin:8px 0 6px">Compact & Practical</h3>
+            <div class="rate">₹1200 / day</div>
+            <p class="muted">Affordable daily commutes and short trips with easy parking.</p>
+            <div class="card-actions">
+              <button class="btn selectBtn">Select</button>
+              <button class="btn outline waBtn" data-msg="Interested in Budget Hatchback">WhatsApp</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="features">
+        <div class="feat">
+          <div class="pill">Why SRtravels</div>
+          <h4>Transparent Rates</h4>
+          <p class="muted">No surprise charges. Clear day-wise pricing and easy quotes.</p>
+        </div>
+        <div class="feat">
+          <div class="pill">Comfort</div>
+          <h4>Clean & Sanitized Cars</h4>
+          <p class="muted">Regularly serviced, well-maintained vehicles for a smooth ride.</p>
+        </div>
+        <div class="feat">
+          <div class="pill">Support</div>
+          <h4>24/7 Assistance</h4>
+          <p class="muted">Call or WhatsApp us anytime for help or instant booking.</p>
+        </div>
+        <div class="feat">
+          <div class="pill">Trust</div>
+          <h4>Professional Drivers</h4>
+          <p class="muted">Courteous, experienced drivers focused on your safety.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECOND FORM (optional for users who scroll) -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="title">Quick Booking</div>
+      <p class="muted">Fill the form and send a quote on WhatsApp — we’ll confirm availability ASAP.</p>
+      <form id="rentalForm" class="hero-form" style="margin:0">
+        <div class="field" style="grid-column:span 2">
+          <label for="car2">Select Car</label>
+          <select id="car2" required>
+            <option value="">-- Choose Car --</option>
+            <option value="Luxury SUV|2500">Luxury SUV — ₹2500/day</option>
+            <option value="Comfort Sedan|1800">Comfort Sedan — ₹1800/day</option>
+            <option value="Budget Hatchback|1200">Budget Hatchback — ₹1200/day</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="pickup2">Pickup Point</label>
+          <input class="input" id="pickup2" placeholder="e.g. Indore Junction" required>
+        </div>
+        <div class="field">
+          <label for="destination2">Destination</label>
+          <input class="input" id="destination2" placeholder="e.g. Ujjain" required>
+        </div>
+        <div class="field">
+          <label for="fromDate2">From</label>
+          <input class="input" id="fromDate2" type="date" required>
+        </div>
+        <div class="field">
+          <label for="tillDate2">Till</label>
+          <input class="input" id="tillDate2" type="date" required>
+        </div>
+        <button type="submit" class="btn">Send Quote on WhatsApp</button>
+        <div id="estimate2" class="est">💡 Estimated total: —</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ABOUT + MAP -->
+  <section id="about" class="section" style="padding-top:0">
+    <div class="container about">
+      <div>
+        <h2 class="title">About SRtravels</h2>
+        <p>We’re an Indore-based car rental company focused on reliability, comfort, and honest pricing. Whether it’s an airport pickup, business meeting, outstation trip, or a weekend getaway — we’ve got the right car for you.</p>
+        <p><strong>Office:</strong> Indore Railway Station</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">ⓘ</a>
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+      <div>
+        <iframe
+          class="map"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.2931434746234!2d75.8681980747128!3d22.719568028861163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fdc64b33e40d%3A0xcca163ed8f19a19d!2sIndore%20Junction!5e0!3m2!1sen!2sin!4v1700000000000">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <h2 class="title">Customers Love Us</h2>
+      <p class="muted">A few words from our recent riders.</p>
+      <div class="testis">
+        <div class="quote">“Clean car, on-time pickup, and very polite driver. Booking on WhatsApp was super easy!” — <strong>Rohit S.</strong></div>
+        <div class="quote">“Great rates and quick confirmation for our outstation trip to Ujjain. Recommended.” — <strong>Priya K.</strong></div>
+        <div class="quote">“Professional and reliable. I use SRtravels for client meetings across the city.” — <strong>Ankit M.</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <h2 class="title">FAQs</h2>
+      <details>
+        <summary>How do I get a quote?</summary>
+        <p>Choose a car, enter pickup & destination with dates, then tap “Send Quote on WhatsApp.” We’ll respond with availability and final pricing.</p>
+      </details>
+      <details>
+        <summary>Are driver charges included?</summary>
+        <p>Rates shown are demo per-day vehicle charges. Driver allowance, tolls, parking, and interstate taxes are additional as applicable.</p>
+      </details>
+      <details>
+        <summary>Do you offer airport transfers?</summary>
+        <p>Yes, we provide 24/7 airport pickups and drops in Indore. Send a quick WhatsApp to schedule.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <footer id="contact" class="footer">
+    <div class="container foot-grid">
+      <div>
+        <div class="brand" style="color:#fff">
+          <div class="logo">SR</div><span>SRtravels</span>
+        </div>
+        <p class="muted" style="color:#bcd">Fast & Reliable Car Rentals in Indore.</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">ⓘ</a>
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin:0 0 8px">Contact</h4>
+        <ul>
+          <li><a style="color:#e6edf6" href="tel:+919646884773">+91 96468 84773</a></li>
+          <li><a style="color:#e6edf6" href="https://wa.me/9646884773" target="_blank" rel="noopener">WhatsApp Us</a></li>
+          <li>Indore Railway Station</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="margin:0 0 8px">Quick Links</h4>
+        <ul>
+          <li><a style="color:#e6edf6" href="#cars">Browse Cars</a></li>
+          <li><a style="color:#e6edf6" href="#about">About Us</a></li>
+          <li><a style="color:#e6edf6" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">
+      © 2025 SRtravels • All rights reserved.
+    </div>
+  </footer>
+
+  <!-- FLOATING ACTION BUTTONS -->
+  <a class="float whatsapp" href="https://wa.me/9646884773" target="_blank" rel="noopener" title="Chat on WhatsApp">💬 WhatsApp</a>
+  <a class="float call" href="tel:+919646884773" title="Call SRtravels">📞 Call</a>
+
+  <script>
+    // Utilities
+    function encodeMsg(text){ return encodeURIComponent(text); }
+    function dateDiffDays(a,b){
+      const ms = (new Date(b).setHours(12)-new Date(a).setHours(12));
+      if(isNaN(ms)) return 0;
+      const d = Math.ceil(ms/(1000*60*60*24));
+      return Math.max(d,1); // minimum 1 day
+    }
+    function formatDate(d){
+      if(!d) return "";
+      try{
+        const dt = new Date(d+"T00:00:00");
+        return dt.toLocaleDateString('en-IN', { day:'2-digit', month:'short', year:'numeric' });
+      }catch(_){ return d; }
+    }
+    function updateEstimate(selectId, fromId, tillId, outId){
+      const val = document.getElementById(selectId).value || "";
+      const [car, rate] = val.split("|");
+      const from = document.getElementById(fromId).value;
+      const till = document.getElementById(tillId).value;
+      const days = (from && till && rate) ? dateDiffDays(from,till) : 0;
+      const total = days ? (Number(rate) * days) : 0;
+      document.getElementById(outId).textContent =
+        days ? `💡 Estimated total: ₹${total.toLocaleString('en-IN')} (${days} day${days>1?'s':''} × ₹${rate}/day)` : "💡 Estimated total: —";
+    }
+    function setMinDates(ids){
+      const today = new Date().toISOString().split("T")[0];
+      ids.forEach(id => document.getElementById(id).setAttribute("min", today));
+    }
+
+    // Hero form handlers
+    const heroForm = document.getElementById('heroForm');
+    const est1 = 'estimate';
+    heroForm.addEventListener('input', () => updateEstimate('car','fromDate','tillDate',est1));
+    heroForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const carData = document.getElementById('car').value;
+      if(!carData) return alert("Please select a car.");
+      const [car, rate] = carData.split("|");
+      const pickup = document.getElementById('pickup').value.trim();
+      const destination = document.getElementById('destination').value.trim();
+      const fromDate = document.getElementById('fromDate').value;
+      const tillDate = document.getElementById('tillDate').value;
+      const days = dateDiffDays(fromDate,tillDate);
+      const total = Number(rate)*days;
+
+      const message =
+`Car Rental Enquiry (SRtravels)
+🚘 Car: ${car}
+💰 Rate: ₹${rate}/day
+🧮 Days: ${days} | Est. Total: ₹${total}
+📍 Pickup: ${pickup}
+🎯 Destination: ${destination}
+📅 From: ${formatDate(fromDate)}
+📅 Till: ${formatDate(tillDate)}
+—
+Please confirm availability and final quote.`;
+
+      const url = "https://wa.me/9646884773?text=" + encodeMsg(message);
+      window.open(url, "_blank");
+    });
+
+    // Second form handlers
+    const form2 = document.getElementById('rentalForm');
+    const est2 = 'estimate2';
+    form2.addEventListener('input', () => updateEstimate('car2','fromDate2','tillDate2',est2));
+    form2.addEventListener('submit', e => {
+      e.preventDefault();
+      const carData = document.getElementById('car2').value;
+      if(!carData) return alert("Please select a car.");
+      const [car, rate] = carData.split("|");
+      const pickup = document.getElementById('pickup2').value.trim();
+      const destination = document.getElementById('destination2').value.trim();
+      const fromDate = document.getElementById('fromDate2').value;
+      const tillDate = document.getElementById('tillDate2').value;
+      const days = dateDiffDays(fromDate,tillDate);
+      const total = Number(rate)*days;
+
+      const message =
+`Car Rental Enquiry (SRtravels)
+🚘 Car: ${car}
+💰 Rate: ₹${rate}/day
+🧮 Days: ${days} | Est. Total: ₹${total}
+📍 Pickup: ${pickup}
+🎯 Destination: ${destination}
+📅 From: ${formatDate(fromDate)}
+📅 Till: ${formatDate(tillDate)}
+—
+Please confirm availability and final quote.`;
+
+      const url = "https://wa.me/9646884773?text=" + encodeMsg(message);
+      window.open(url, "_blank");
+    });
+
+    // Card → select integration & quick WhatsApp
+    document.querySelectorAll('.card').forEach(card=>{
+      const selectBtns = card.querySelectorAll('.selectBtn');
+      const waBtn = card.querySelector('.waBtn');
+      const value = card.getAttribute('data-car');
+
+      selectBtns.forEach(btn=>{
+        btn.addEventListener('click', (e)=>{
+          e.preventDefault();
+          // set both selects
+          document.getElementById('car').value = value;
+          document.getElementById('car2').value = value;
+          updateEstimate('car','fromDate','tillDate',est1);
+          updateEstimate('car2','fromDate2','tillDate2',est2);
+          window.scrollTo({top: document.querySelector('.hero').offsetTop + 80, behavior:'smooth'});
+        });
+      });
+
+      waBtn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const [car, rate] = value.split('|');
+        const msg = `Hi SRtravels, I am interested in ${car} (₹${rate}/day). Please share availability.`;
+        window.open("https://wa.me/9646884773?text=" + encodeMsg(msg), "_blank");
+      });
+    });
+
+    // Set min dates to today
+    setMinDates(['fromDate','tillDate','fromDate2','tillDate2']);
+  </script>
+</body>
+</html>
