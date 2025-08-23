@@ -142,27 +142,36 @@
     .float.call{right:18px; background:#198754}
     /* SMALL */
     /* Mobile fixes */
-@media (max-width:768px){
-  .hero-form{
-    grid-template-columns:1fr !important;
+/* Mobile fixes */
+@media (max-width: 768px) {
+  .hero-form {
+    grid-template-columns: 1fr !important; /* force single column */
   }
-  .hero-form .field[style]{
+
+  .hero-form .field {
     grid-column: auto !important; /* override inline span=2 */
+    width: 100% !important;       /* force full width */
   }
-  .hero .overlay{
-    text-align:left; /* optional: left align for better readability */
-    padding:32px 16px;
+
+  .hero .overlay {
+    padding: 20px 15px;
+    text-align: left;
   }
-  .hero h1{
-    font-size:24px;
+
+  .hero h1 {
+    font-size: 24px;
+    line-height: 1.3;
   }
-  .hero p{
-    font-size:15px;
+
+  .hero p {
+    font-size: 15px;
   }
-  body, html{
-    overflow-x:hidden; /* prevent side scroll */
+
+  body, html {
+    overflow-x: hidden; /* prevent horizontal scroll */
   }
 }
+
         @media (max-width:1000px){
       .hero-form{grid-template-columns:1fr 1fr; }
       .cards{grid-template-columns:1fr}
