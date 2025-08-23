@@ -143,32 +143,37 @@
     /* SMALL */
     /* Mobile fixes */
 /* Mobile fixes */
+    
+/* Mobile responsive form */
 @media (max-width: 768px) {
   .hero-form {
-    grid-template-columns: 1fr !important; /* force single column */
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+    width: 100% !important;
   }
 
   .hero-form .field {
-    grid-column: auto !important; /* override inline span=2 */
-    width: 100% !important;       /* force full width */
+    grid-column: auto !important; /* remove span-2 */
+    width: 100% !important;
   }
 
-  .hero .overlay {
-    padding: 20px 15px;
-    text-align: left;
+  .hero-form button {
+    width: 100% !important; /* full width button */
+  }
+}
+/* Mobile responsive badges */
+@media (max-width: 768px) {
+  .badges {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
   }
 
-  .hero h1 {
-    font-size: 24px;
-    line-height: 1.3;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  body, html {
-    overflow-x: hidden; /* prevent horizontal scroll */
+  .badges .badge {
+    width: 100% !important;
+    text-align: center !important;
   }
 }
 
