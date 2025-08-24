@@ -138,12 +138,18 @@
       position:fixed; bottom:18px; z-index:9999; display:flex; align-items:center; gap:8px;
       padding:10px 12px; border-radius:999px; color:#fff; font-weight:800; box-shadow:var(--shadow)
     }
-    .float.whatsapp{left:18px; background:#25d366}
-    .float.call{right:18px; background:#198754}
+    .float.whatsapp{right:18px; background:#198754}
+    .float.call{left:18px; background:#25d366}
     /* SMALL */
+    @media (max-width:1000px){
+      .hero-form{grid-template-columns:1fr 1fr; }
+      .cards{grid-template-columns:1fr}
+      .features{grid-template-columns:1fr 1fr}
+      .about{grid-template-columns:1fr}
+      .testis{grid-template-columns:1fr}
+      .foot-grid{grid-template-columns:1fr}
+    }
     /* Mobile fixes */
-/* Mobile fixes */
-    
 /* Mobile responsive form */
 @media (max-width: 768px) {
   .hero-form {
@@ -161,30 +167,24 @@
   .hero-form button {
     width: 100% !important; /* full width button */
   }
+  .cta {
+    display: none !important;
+  }
 }
-/* Mobile responsive badges */
+
+/* Mobile: stack badges vertically */
 @media (max-width: 768px) {
-  .badges {
-    display: flex !important;
+  .hero-badges {
     flex-direction: column !important;
     align-items: center !important;
     gap: 10px !important;
   }
-
-  .badges .badge {
+  .hero-badges .badge {
     width: 100% !important;
     text-align: center !important;
   }
 }
 
-        @media (max-width:1000px){
-      .hero-form{grid-template-columns:1fr 1fr; }
-      .cards{grid-template-columns:1fr}
-      .features{grid-template-columns:1fr 1fr}
-      .about{grid-template-columns:1fr}
-      .testis{grid-template-columns:1fr}
-      .foot-grid{grid-template-columns:1fr}
-    }
 
   </style>
 </head>
@@ -595,3 +595,5 @@ Please confirm availability and final quote.`;
   </script>
 </body>
 </html>
+
+
