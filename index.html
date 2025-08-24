@@ -195,7 +195,7 @@
     <div class="container nav-inner">
       <div class="brand">
         <div class="logo">SR</div>
-        <span>travels</span>
+        <span>SRtravels</span>
       </div>
       <div class="menu">
         <a href="#home">Home</a>
@@ -220,10 +220,16 @@
       <p>Choose your ride, pick your dates, and send a quote instantly on WhatsApp. Transparent rates and friendly service from SRtravels.</p>
 
       <!-- INLINE BOOKING FORM -->
-      <form id="heroForm" class="hero-form">
+     
+  <!-- SECOND FORM (optional for users who scroll) -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="title">Quick Booking</div>
+      <p class="muted">Fill the form and send a quote on WhatsApp — we’ll confirm availability ASAP.</p>
+      <form id="rentalForm" class="hero-form" style="margin:0">
         <div class="field" style="grid-column:span 2">
-          <label for="car">Select Car</label>
-          <select id="car" required>
+          <label for="car2">Select Car</label>
+          <select id="car2" required>
             <option value="">-- Choose Car --</option>
             <option value="Luxury SUV|2500">Luxury SUV — ₹2500/day</option>
             <option value="Comfort Sedan|1800">Comfort Sedan — ₹1800/day</option>
@@ -231,24 +237,28 @@
           </select>
         </div>
         <div class="field">
-          <label for="pickup">Pickup Point</label>
-          <input class="input" id="pickup" placeholder="e.g. Indore Junction" required>
+          <label for="pickup2">Pickup Point</label>
+          <input class="input" id="pickup2" placeholder="e.g. Indore Junction" required>
         </div>
         <div class="field">
-          <label for="destination">Destination</label>
-          <input class="input" id="destination" placeholder="e.g. Ujjain" required>
+          <label for="destination2">Destination</label>
+          <input class="input" id="destination2" placeholder="e.g. Ujjain" required>
         </div>
         <div class="field">
-          <label for="fromDate">From</label>
-          <input class="input" id="fromDate" type="date" required>
+          <label for="fromDate2">From</label>
+          <input class="input" id="fromDate2" type="date" required>
         </div>
         <div class="field">
-          <label for="tillDate">Till</label>
-          <input class="input" id="tillDate" type="date" required>
+          <label for="tillDate2">Till</label>
+          <input class="input" id="tillDate2" type="date" required>
         </div>
         <button type="submit" class="btn">Send Quote on WhatsApp</button>
-        <div id="estimate" class="est">💡 Estimated total: —</div>
+        <div id="estimate2" class="est">💡 Estimated total: —</div>
       </form>
+    </div>
+  </section>
+
+      
     </div>
   </header>
 
@@ -276,7 +286,7 @@
 
         <!-- CAR 2 -->
         <article class="card" data-car="Comfort Sedan|1800">
-          <img src="https://images.unsplash.com/photo-1549921296-3ecf9c5b9c4a?q=80&w=1200&auto=format&fit=crop" alt="Comfort Sedan">
+          <img src="https://auto.hindustantimes.com/cms-images/marutisuzuki_ertiga/images/exterior_marutisuzuki-ertiga2022_front-left-side_1150x666.jpeg?q=80&w=1200&auto=format&fit=crop" alt="Comfort Sedan">
           <div class="card-body">
             <span class="pill">Comfort Sedan</span>
             <h3 style="margin:8px 0 6px">Smooth & Efficient</h3>
